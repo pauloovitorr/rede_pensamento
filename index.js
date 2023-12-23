@@ -13,6 +13,13 @@ const Pensamento = require('./models/Pensamento')
 const User = require('./models/User')
 
 
+// Importanto Rotas
+const routerPensamentos = require('./routes/RotasPensamentos')
+
+// Import Controller
+const controllerpensamentos = require('./controller/ControllerPensamentos')
+const ControllerPensamentos = new controllerpensamentos()
+
 // views dinâmicas
 app.engine('handlebars', handleabrs.engine())
 app.set('view engine', 'handlebars')
@@ -60,10 +67,18 @@ app.use((req,res, next)=>{
 })
 
 
+
+// Roteamento
+app.use('/pensamentos', routerPensamentos)
+app.use('/', ControllerPensamentos.GetPensamentos)
+
+
+
+
 conexao.sync()
 .then(()=>{
     app.listen(porta, ()=>{
-        console.log('Servidor no ar')
+        console.log('Servidor no ar na porta: ', porta)
     })
 })
 .catch((err)=>{
