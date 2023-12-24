@@ -15,6 +15,7 @@ const User = require('./models/User')
 
 // Importanto Rotas
 const routerPensamentos = require('./routes/RotasPensamentos')
+const rotasAuth = require('./routes/authRoutes')
 
 // Import Controller
 const controllerpensamentos = require('./controller/ControllerPensamentos')
@@ -70,7 +71,9 @@ app.use((req,res, next)=>{
 
 // Roteamento
 app.use('/pensamentos', routerPensamentos)
+app.use('/', rotasAuth)
 app.use('/', ControllerPensamentos.GetPensamentos)
+
 
 
 
