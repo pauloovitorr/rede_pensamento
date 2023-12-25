@@ -116,8 +116,30 @@
     max-width: 550px;
 }
 
+.titulo_container a{
+    text-decoration: none;
+}
 
+/* CRIAR E EDITAR */
 
+.Pensamento_form_container{
+    max-width: 450px;
+}
+
+.Pensamento_form_container a{
+    color: #09d3ee;
+    text-decoration: none;
+}
+
+.Pensamento_form_container a:hover{
+    color: #fff;
+}
+
+.Pensamento_form_container h2{
+    color: #fff;
+    border-left: 4px solid #09d3ee;
+    padding-left: 6px;
+}
 
 /* FOOTER */
 footer{
