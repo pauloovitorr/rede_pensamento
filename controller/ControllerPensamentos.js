@@ -7,7 +7,22 @@ class PensamentosController {
     }
 
     async dashboard(req, res) {
-        res.render('pensamentos/dashboard')
+        const userid = req.session.userid
+
+        const user = await User.findOne({
+            where:{id:userid},
+            include: Pensamento,
+            plain: true,
+        })
+
+        // Checa se usuário existe
+        if(!user){
+            res.redirect('/login')
+        }
+
+        const Pensamentos = user.Pensamentos.map((result)=> result.dataValues)
+        
+        res.render('pensamentos/dashboard', {Pensamentos})
     }
 
     async criarPensamento(req, res) {

@@ -86,7 +86,8 @@
 }
 
 .btn{
-    width: 33%;
+    width: 170px;
+    height: 30px;
     margin: 0 auto;
     padding: 5px;
     border-radius: 5px;
@@ -96,6 +97,7 @@
     cursor: pointer;
     border: 1px solid #222;
     transition: .6s;
+    text-align: center;
 }
 
 .btn:hover{
@@ -141,9 +143,74 @@
     padding-left: 6px;
 }
 
+
+/*DASHBOARD*/
+.titulo_container{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 80%;
+    margin: 0 auto;
+}
+.titulo_container div{
+    display: flex;
+    align-items: center;
+}
+
+.titulo_container h2{
+    border-left: 4px solid #09d3ee;
+    padding-left: 5px;
+}
+
+.dash ul{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.btnn{
+    width: 80px;
+    height: 30px;
+    margin: 0 auto;
+    padding: 5px;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid #fff;
+    transition: .6s;
+    text-align: center;
+}
+
+.btnn:hover{
+    color:#222;
+    background-color: #09d3ee;
+}
+
+.h3_pensa{
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.dash ul li{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #09d3ee;
+    border-radius: 5px;
+    padding-bottom: 5px;
+}
+
+.actions{
+    display: flex;
+}
+
 /* FOOTER */
 footer{
-    height: 150px;
+    height: 140px;
     display: flex;
     justify-content: center;
     align-items:center;

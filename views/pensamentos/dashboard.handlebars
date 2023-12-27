@@ -1,7 +1,27 @@
 <div class="dash">
     <div class="titulo_container">
-        <h2>Dashboard</h2>
-        <a href="/pensamentos/add" class="btn">Criar Pensamentos</a>
+        <div><h2>Dashboard</h2></div>
+        <div><a href="/pensamentos/add" class="btn">Criar Pensamentos</a></div>
     </div>
-    <h3>Seus Pensamentos</h3>
+
+    
+    <div class="h3_pensa"><h3>Seus Pensamentos</h3></div>
+
+    <ul>
+        {{#each Pensamentos}}
+        <li> 
+            <span class="label">{{this.titulo}}</span>
+            
+            <span class="actions">
+
+                <a href="/" class="btnn">Eitar</a>
+
+                <form action="/">
+                    <input type="hidden" name="id" value="{{this.id}}">
+                    <input type="submit" value="Excluir" class="btnn">
+                </form>
+            </span>
+        </li>
+        {{/each}}
+    </ul>
 </div>
