@@ -1,5 +1,7 @@
+
 const Pensamento = require('../models/Pensamento')
 const User = require('../models/User')
+
 
 class PensamentosController {
     async GetPensamentos(req, res) {
@@ -21,8 +23,14 @@ class PensamentosController {
         }
 
         const Pensamentos = user.Pensamentos.map((result)=> result.dataValues)
+
+        let contem_Pensa = true
+
+        if(Pensamentos.length === 0 ){
+            contem_Pensa = false
+        }
         
-        res.render('pensamentos/dashboard', {Pensamentos})
+        res.render('pensamentos/dashboard', {Pensamentos, contem_Pensa})
     }
 
     async criarPensamento(req, res) {
@@ -49,6 +57,29 @@ class PensamentosController {
             console.log('Erro: ', erro)
         }
 
+    }
+
+   async rotaEditar(req,res){
+        const {id} = req.body
+        const user = await Pensamento.findOne({where: {id:id}, raw:true})
+
+        res.render('pensamentos/editar', {user})
+    }
+
+    async editarPensamento(req,res){
+        const titulo = req.body.titulo
+        const id = req.body.id
+
+        await Pensamento.update({titulo:titulo}, {where:{id:id}})
+        res.redirect('/pensamentos/dashboard')
+    }
+
+    async remove(req,res){
+        const {id} = req.body
+
+        await Pensamento.destroy({where:{id:id}})
+
+        res.redirect('/pensamentos/dashboard')
     }
 }
 

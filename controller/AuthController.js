@@ -1,8 +1,8 @@
-const { S } = require('core-js/modules/_export')
+
 const User = require('../models/User')
 
 const bcrypt = require('bcryptjs')
-const { where } = require('sequelize')
+
 
 
 class AuthController{

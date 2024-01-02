@@ -182,6 +182,7 @@
     border: 1px solid #fff;
     transition: .6s;
     text-align: center;
+    margin: 0px 10px;
 }
 
 .btnn:hover{
@@ -193,6 +194,10 @@
     width: 90%;
     margin: 0 auto;
     margin-bottom: 10px;
+}
+
+.h3_pensa a{
+    color: #09d3ee;
 }
 
 .dash ul li{

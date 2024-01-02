@@ -1,22 +1,29 @@
 <div class="dash">
     <div class="titulo_container">
-        <div><h2>Dashboard</h2></div>
+        <div>
+            <h2>Dashboard</h2>
+        </div>
         <div><a href="/pensamentos/add" class="btn">Criar Pensamentos</a></div>
     </div>
 
-    
-    <div class="h3_pensa"><h3>Seus Pensamentos</h3></div>
 
+    <div class="h3_pensa">
+        <h3>Seus Pensamentos</h3>
+    </div>
+    {{#if contem_Pensa}}
     <ul>
         {{#each Pensamentos}}
-        <li> 
+        <li>
             <span class="label">{{this.titulo}}</span>
-            
+
             <span class="actions">
 
-                <a href="/" class="btnn">Eitar</a>
+                <form action="/pensamentos/editar" method="post">
+                    <input type="hidden" name="id" value="{{this.id}}">
+                    <input type="submit" value="Editar" class="btnn">
+                </form>
 
-                <form action="/">
+                <form action="/pensamentos/remove" method="post">
                     <input type="hidden" name="id" value="{{this.id}}">
                     <input type="submit" value="Excluir" class="btnn">
                 </form>
@@ -24,4 +31,7 @@
         </li>
         {{/each}}
     </ul>
+    {{else}}
+    <h3 class="h3_pensa">Nenhum pensamento cadastrado, comece a criar <a href="/pensamentos/add">por aqui</a></h3>
+    {{/if}}
 </div>

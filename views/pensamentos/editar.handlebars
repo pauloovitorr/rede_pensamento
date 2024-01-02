@@ -1,0 +1,24 @@
+
+<div class="Pensamento_form_container">
+    <a href="/pensamentos/dashboard">Voltar</a>
+
+    <h2>Editando Pensamento</h2>
+
+   
+    <form action="/pensamentos/editando" method="post">
+
+        <div class="div_input">
+
+            <label for="titulo">Pensamento:</label>
+            <input type="text" name="titulo" id="titulo" value="{{user.titulo}}" required>
+
+            <input type="hidden" name="id" id="id" value="{{user.id}}">
+        </div>
+
+        <input type="submit" value="Editar" class="btn">
+
+    </form>
+
+  
+
+</div>
