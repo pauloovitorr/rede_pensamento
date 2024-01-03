@@ -5,7 +5,14 @@ const User = require('../models/User')
 
 class PensamentosController {
     async GetPensamentos(req, res) {
-        res.render('pensamentos/home')
+        const Pensamentos = await Pensamento.findAll({
+            include:User,
+        })
+
+        const PensamentosDate = Pensamentos.map((result) => result.get({plain:true}))
+        
+      
+        res.render('pensamentos/home', {PensamentosDate})
     }
 
     async dashboard(req, res) {

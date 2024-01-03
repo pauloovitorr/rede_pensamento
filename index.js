@@ -75,9 +75,6 @@ app.use('/', rotasAuth)
 app.use('/', ControllerPensamentos.GetPensamentos)
 
 
-
-
-
 conexao.sync()
 .then(()=>{
     app.listen(porta, ()=>{

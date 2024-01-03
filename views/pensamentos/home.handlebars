@@ -1,1 +1,19 @@
-<h1>Todos os Pensamentos</h1>
+<div class="home">
+    <h1>Todos os Pensamentos</h1>
+</div>
+
+<div class="pensamento_container">
+    {{#each PensamentosDate}}
+
+    <figure>
+        <blockquote>
+            "{{this.titulo}}"
+        </blockquote>
+
+    <figcaption>
+        por <span>{{this.User.nome}}</span>
+    </figcaption>
+    </figure>
+
+    {{/each}}
+</div>
