@@ -1,18 +1,35 @@
-
+const f = require('session-file-store')
 const Pensamento = require('../models/Pensamento')
 const User = require('../models/User')
+
+const {Op} = require('sequelize')
 
 
 class PensamentosController {
     async GetPensamentos(req, res) {
+
+        let pesquisar = ''
+
+        if(req.query.pesquisar){
+            pesquisar = req.query.pesquisar
+        }
+
         const Pensamentos = await Pensamento.findAll({
             include:User,
+            where: {
+                titulo: {[Op.like]: `%${pesquisar}%` }
+            }
         })
 
         const PensamentosDate = Pensamentos.map((result) => result.get({plain:true}))
         
-      
-        res.render('pensamentos/home', {PensamentosDate})
+        let pensamentos_qtd = PensamentosDate.length
+
+        if(pensamentos_qtd === 0){
+            pensamentos_qtd = false
+        }
+
+        res.render('pensamentos/home', {PensamentosDate, pesquisar, pensamentos_qtd})
     }
 
     async dashboard(req, res) {

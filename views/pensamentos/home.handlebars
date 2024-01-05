@@ -1,26 +1,44 @@
 <div class="home">
-    <h1>Todos os Pensamentos</h1>
+
+    {{#if pesquisar}}
+
+    <h1>Você está buscando por: <span>{{this.pesquisar}}</span>:</h1>
+
+        {{#if pensamentos_qtd}}
+            <p>Foram encontrados <span>{{pensamentos_qtd}}</span> Pensamentos</p>
+        {{else}}
+            <p>Nenhum pensamento foi encontrado para o termo pesquisado</p>
+        {{/if}}
+
+
+    {{else}}
+
+
+    <h1>Conheça alguns dos nossos <span>Pensamentos</span>:</h1>
+    {{/if}}
+
+
     <form action="/" method="get">
         <input type="text" name="pesquisar" placeholder="Está buscando por algo ?">
         <button type="submit" class="btn" value="Buscar"> Buscar </button>
     </form>
 
     <div class="order-container">
-    <span>Ordenar por:</span>
-    <form action="/" method="get">
-        <input type="hidden" name="pesquisar" value="{{this.pesquisar}}">
-        <input type="hidden" name="order" value="new">
-        <button type="submit"><i class="bi bi-arrow-up"></i></button>
-    </form>
+        <span>Ordenar por:</span>
+        <form action="/" method="get">
+            <input type="hidden" name="pesquisar" value="{{this.pesquisar}}">
+            <input type="hidden" name="order" value="new">
+            <button type="submit"><i class="bi bi-arrow-up"></i></button>
+        </form>
 
-    <form action="/" method="get">
-        <input type="hidden" name="pesquisar" value="{{this.pesquisar}}">
-        <input type="hidden" name="order" value="old">
-        <button type="submit"><i class="bi bi-arrow-down"></i></button>
-    </form>
+        <form action="/" method="get">
+            <input type="hidden" name="pesquisar" value="{{this.pesquisar}}">
+            <input type="hidden" name="order" value="old">
+            <button type="submit"><i class="bi bi-arrow-down"></i></button>
+        </form>
 
-    <a href="/">Limpar</a>
-</div>
+        <a href="/">Limpar</a>
+    </div>
 </div>
 
 
@@ -33,9 +51,9 @@
             "{{this.titulo}}"
         </blockquote>
 
-    <figcaption>
-        por <span>{{this.User.nome}}</span>
-    </figcaption>
+        <figcaption>
+            por <span>{{this.User.nome}}</span>
+        </figcaption>
     </figure>
 
     {{/each}}
