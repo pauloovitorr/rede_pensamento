@@ -2,7 +2,7 @@ const f = require('session-file-store')
 const Pensamento = require('../models/Pensamento')
 const User = require('../models/User')
 
-const {Op} = require('sequelize')
+const {Op, or} = require('sequelize')
 
 
 class PensamentosController {
@@ -14,14 +14,26 @@ class PensamentosController {
             pesquisar = req.query.pesquisar
         }
 
+        let order = 'DESC'
+
+        if(req.query.order === 'old'){
+            order = 'ASC'
+        }
+        else{
+            order = 'DESC'
+        }
+
         const Pensamentos = await Pensamento.findAll({
             include:User,
             where: {
                 titulo: {[Op.like]: `%${pesquisar}%` }
-            }
+            },
+            order: [['createdAt', order]]
         })
 
         const PensamentosDate = Pensamentos.map((result) => result.get({plain:true}))
+
+      
         
         let pensamentos_qtd = PensamentosDate.length
 
@@ -30,6 +42,7 @@ class PensamentosController {
         }
 
         res.render('pensamentos/home', {PensamentosDate, pesquisar, pensamentos_qtd})
+
     }
 
     async dashboard(req, res) {
